@@ -2,9 +2,12 @@ import flet as ft
 from flet import Colors
 import firebase_admin
 from firebase_admin import credentials, firestore
+import json
+import os
 
 # Configuração do Firebase
-cred = credentials.Certificate("firebase_key.json")  # Caminho do arquivo JSON
+firebase_key = json.loads(os.environ['FIREBASE_KEY'])
+cred = credentials.Certificate(firebase_key)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
