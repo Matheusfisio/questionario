@@ -4,6 +4,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import json
 import os
+from datetime import datetime 
 
 # Configuração do Firebase
 firebase_key = json.loads(os.environ['FIREBASE_KEY'])
@@ -24,6 +25,7 @@ def main(page: ft.Page):
             "local_dor": campo_dor.value,
             "dormencia": esc_dormencia.value,
             "local_dormencia": campo_dormencia.value,
+            "data": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
         
         # Inserir dados no Firestore
