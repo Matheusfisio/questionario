@@ -74,8 +74,8 @@ def main(page: ft.Page):
                              on_change=atualizar_cor_slider)
     
     esc_sono = ft.Slider(min=0, max=10, divisions=10, label="{value}",
-                         thumb_color=Colors.BLUE,
-                         on_change=atualizar_cor_slider)
+                         thumb_color=Colors.RED,
+                         on_change=lambda e: atualizar_cor_slider(e, invertido=True))
     
     esc_dor = ft.Slider(min=0, max=10, divisions=10, label="{value}",
                         thumb_color=Colors.BLUE,
