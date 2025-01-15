@@ -44,19 +44,28 @@ def main(page: ft.Page):
     ], alignment=ft.MainAxisAlignment.CENTER)
 
     # Função para definir cores do slider dinamicamente
-    def define_cor_slider(valor):
-        if valor <= 3:
-            return Colors.GREEN
-        elif valor <= 6:
-            return Colors.YELLOW
-        elif valor <= 8:
-            return Colors.ORANGE
+    def define_cor_slider(valor, invertido=False):
+        if invertido:
+            if valor <= 3:
+                return Colors.RED
+            elif valor <= 5:
+                return Colors.ORANGE
+            elif valor <= 7:
+                return Colors.YELLOW
+            else:
+                return Colors.GREEN
         else:
-            return Colors.RED
-
+            if valor <= 3:
+                return Colors.GREEN
+            elif valor <= 6:
+                return Colors.YELLOW
+            elif valor <= 8:
+                return Colors.ORANGE
+            else:
+                return Colors.RED
     # Atualiza cor do slider dinamicamente
-    def atualizar_cor_slider(e):
-        e.control.thumb_color = define_cor_slider(e.control.value)
+    def atualizar_cor_slider(e, invertido=False):
+        e.control.thumb_color = define_cor_slider(e.control.value, invertido)
         e.control.update()
 
     # Perguntas com escala e campos de texto
